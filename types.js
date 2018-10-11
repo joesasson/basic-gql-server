@@ -21,15 +21,14 @@ export default gql`
     name: String!,
     createdAt: GraphQLDateTime!,
     updatedAt: GraphQLDateTime!,
-    locations: [Location],
-    events: [Event]
+    # locations: [Location],
+    # events: [Event]
   }
 
   type Event {
     _id: ID!,
     name: String!,
-    date: Int!,
-    time: Int!,
+    dateTime: GraphQLDateTime!
     description: String!,
     createdAt: GraphQLDateTime!,
     updatedAt: GraphQLDateTime!,
@@ -37,36 +36,38 @@ export default gql`
   }
 
   type Query {
+    event(_id: ID!): Event!,
+    location(_id: ID!): Location!,
+    organization(_id: ID!): Organization!, 
     allEvents: [Event!],
-    event: Event!
     allLocations: [Location!],
     allOrganizations: [Organization!]
   }
 
-  type Mutation {
-    createLocation(
-      name: String!,
-      address: String!,
-      latitude: Float
-      longitude: Float
-      createdAt: Int
-      updatedAt: Int
-    ): Location!,
-    createEvent(
-      name: String!,
-      date: Int!,
-      time: Int!,
-      description: String!,
-      createdAt: GraphQLDateTime!,
-      updatedAt: GraphQLDateTime!,
-      organization: Organization!
-    ): Event!,
-    createOrganization(
-      name: String!,
-      createdAt: GraphQLDateTime!,
-      updatedAt: GraphQLDateTime!,
-      locations: [Location],
-      events: [Event]
-    ): Organization!
-  }
+  # type Mutation {
+  #   createLocation(
+  #     name: String!,
+  #     address: String!,
+  #     latitude: Float
+  #     longitude: Float
+  #     createdAt: Int
+  #     updatedAt: Int
+  #   ): Location!,
+  #   createEvent(
+  #     name: String!,
+  #     date: Int!,
+  #     time: Int!,
+  #     description: String!,
+  #     createdAt: GraphQLDateTime!,
+  #     updatedAt: GraphQLDateTime!,
+  #     organization: Organization!
+  #   ): Event!,
+  #   createOrganization(
+  #     name: String!,
+  #     createdAt: GraphQLDateTime!,
+  #     updatedAt: GraphQLDateTime!,
+  #     locations: [Location],
+  #     events: [Event]
+  #   ): Organization!
+  # }
 `

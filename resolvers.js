@@ -1,9 +1,9 @@
-const locations = [
-  { _id: 1, name: "Empire State Building", }
-]
+import { sampleLocations,
+         sampleEvents,
+         sampleOrganizations } from './seeds'
 
 export default {
   Query: {
-    allLocations: () => locations
+    allLocations: () => sampleLocations
   }
 }
