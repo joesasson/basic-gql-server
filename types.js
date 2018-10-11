@@ -36,9 +36,9 @@ export default gql`
   }
 
   type Query {
-    event(_id: ID!): Event!,
-    location(_id: ID!): Location!,
-    organization(_id: ID!): Organization!, 
+    event(_id: ID!): Event,
+    location(_id: ID!): Location,
+    organization(_id: ID!): Organization,
     allEvents: [Event!],
     allLocations: [Location!],
     allOrganizations: [Organization!]
