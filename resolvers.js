@@ -1,6 +1,7 @@
 import { sampleLocations,
          sampleEvents,
          sampleOrganizations } from './models'
+import uuidv4 from 'uuid/v4';
 
 export default {
   Query: {
@@ -14,6 +15,45 @@ export default {
     organization: (parent, { _id }) =>
       sampleOrganizations.find(organization => organization._id === _id )
   },
+
+  Mutation: {
+    createEvent: (parent, args) => {
+      let { name, dateTime, description, createdAt, updatedAt, organizationId } = args
+      const _id = uuidv4()
+      const event = {
+        _id,
+        name,
+        dateTime,
+        description,
+        createdAt,
+        updatedAt,
+        organizationId
+      }
+
+      sampleEvents.push(event)
+      sampleOrganizations[organizationId].eventIds.push(_id)
+
+      return event
+    },
+    updateEvent: (parent, args) => {
+      let event = sampleEvents.find(event => args._id === event._id)
+      event = {...event, ...args}
+      return event
+    },
+    deleteEvent: (parent, args) => {
+      let eventIndex = sampleEvents.findIndex(event => args._id === event._id)
+      if(eventIndex < 0) return false
+      sampleEvents.splice(eventIndex, 1)
+      return true
+    },
+    createLocation: () => '',
+    createOrganization: () => '',
+    // updateLocation: () => '',
+    // updateOrganization: () => '',
+    // deleteLocation: () => '',
+    // deleteOrganization: () => '',
+  },
+
 
   Event: {
     organization: event => sampleOrganizations.find(org => event.organizationId === org._id)

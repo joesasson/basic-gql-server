@@ -45,6 +45,7 @@ export const sampleEvents = [
   {
     _id: '1',
     name: "Happy Hour",
+    description: `An hour that's happy`,
     dateTime: '2018-01-10T21:33:15.233Z',
     createdAt: '2018-01-10T21:33:15.233Z',
     updatedAt: '2018-01-10T21:33:15.233Z',
@@ -53,6 +54,7 @@ export const sampleEvents = [
   {
     _id: '2',
     name: "Sad Hour",
+    description: `An hour that's sad`,
     dateTime: '2018-01-10T21:33:15.233Z',
     createdAt: '2018-01-10T21:33:15.233Z',
     updatedAt: '2018-01-10T21:33:15.233Z',

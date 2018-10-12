@@ -44,30 +44,38 @@ export default gql`
     organizations: [Organization!],
   }
 
-  # type Mutation {
-  #   createLocation(
-  #     name: String!,
-  #     address: String!,
-  #     latitude: Float
-  #     longitude: Float
-  #     createdAt: Int
-  #     updatedAt: Int
-  #   ): Location!,
-  #   createEvent(
-  #     name: String!,
-  #     date: Int!,
-  #     time: Int!,
-  #     description: String!,
-  #     createdAt: GraphQLDateTime!,
-  #     updatedAt: GraphQLDateTime!,
-  #     organization: Organization!
-  #   ): Event!,
-  #   createOrganization(
-  #     name: String!,
-  #     createdAt: GraphQLDateTime!,
-  #     updatedAt: GraphQLDateTime!,
-  #     locations: [Location],
-  #     events: [Event]
-  #   ): Organization!
-  # }
+  type Mutation {
+    createEvent(
+      name: String!,
+      dateTime: GraphQLDateTime!,
+      description: String!,
+      createdAt: GraphQLDateTime!,
+      updatedAt: GraphQLDateTime!,
+      organizationId: ID!
+    ): Event!,
+    updateEvent(
+      _id: ID!
+      name: String,
+      dateTime: GraphQLDateTime,
+      description: String,
+      createdAt: GraphQLDateTime,
+      updatedAt: GraphQLDateTime,
+      organizationId: ID
+    ): Event!,
+    deleteEvent(_id: ID!): Boolean!
+    createLocation(
+      name: String!,
+      address: String!,
+      latitude: Float
+      longitude: Float
+      createdAt: GraphQLDateTime
+      updatedAt: GraphQLDateTime
+      organizationId: ID!
+    ): Location!,
+    createOrganization(
+      name: String!,
+      createdAt: GraphQLDateTime!,
+      updatedAt: GraphQLDateTime!,
+    ): Organization!
+  }
 `
