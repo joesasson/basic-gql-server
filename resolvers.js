@@ -37,12 +37,15 @@ export default {
     },
     updateEvent: (parent, args) => {
       let event = sampleEvents.find(event => args._id === event._id)
-      event = {...event, ...args}
+      event = Object.assign(event, {...args})
       return event
     },
     deleteEvent: (parent, args) => {
+      let event = sampleEvents.find(event => args._id === event._id)
       let eventIndex = sampleEvents.findIndex(event => args._id === event._id)
       if(eventIndex < 0) return false
+      let orgEvents = sampleOrganizations[event.organizationId].eventIds
+      orgEvents.splice(orgEvents.indexOf(event._id), 1)
       sampleEvents.splice(eventIndex, 1)
       return true
     },
