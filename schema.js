@@ -13,7 +13,7 @@ export default gql`
     longitude: Float!
     createdAt: GraphQLDateTime!
     updatedAt: GraphQLDateTime!,
-    # organization: Organization!,
+    organization: Organization!,
   }
 
   type Organization {

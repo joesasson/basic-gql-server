@@ -16,6 +16,13 @@ export default {
   },
 
   Event: {
-    organization: event => sampleOrganizations.find(org => org.id === sampleOrganizations._id)
+    organization: event => sampleOrganizations.find(org => event.organizationId === org._id)
+  },
+  Location: {
+    organization: location => sampleOrganizations.find(org => location.organizationId === org._id)
+  },
+  Organization: {
+    events: org => sampleEvents.filter(event => event.organizationId === org._id),
+    locations: org => sampleLocations.filter(location => location.organizationId === org._id)
   }
 }

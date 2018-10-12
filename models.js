@@ -17,6 +17,7 @@ export const sampleLocations = [
     longitude: -71.786362,
     createdAt: '2018-01-10T21:33:15.233Z',
     updatedAt: '2018-01-10T21:33:15.233Z',
+    organizationId: '1'
   }
 
 ]
@@ -27,8 +28,16 @@ export const sampleOrganizations = [
     name: "Econify",
     createdAt: '2018-01-10T21:33:15.233Z',
     updatedAt: '2018-01-10T21:33:15.233Z',
-    // locationIds: [],
-    // eventIds: []
+    locationIds: ['1', '2'],
+    eventIds: ['1']
+  },
+  {
+    _id: '2',
+    name: "Marc Joseph New York",
+    createdAt: '2018-01-10T21:33:15.233Z',
+    updatedAt: '2018-01-10T21:33:15.233Z',
+    locationIds: [],
+    eventIds: ['2']
   }
 ]
 
@@ -39,7 +48,15 @@ export const sampleEvents = [
     dateTime: '2018-01-10T21:33:15.233Z',
     createdAt: '2018-01-10T21:33:15.233Z',
     updatedAt: '2018-01-10T21:33:15.233Z',
-    organizationId: 1
+    organizationId: '1'
+  },
+  {
+    _id: '2',
+    name: "Sad Hour",
+    dateTime: '2018-01-10T21:33:15.233Z',
+    createdAt: '2018-01-10T21:33:15.233Z',
+    updatedAt: '2018-01-10T21:33:15.233Z',
+    organizationId: '2'
   }
 
 ]
