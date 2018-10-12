@@ -1,10 +1,14 @@
 import express from 'express'
 import { ApolloServer, gql } from 'apollo-server-express'
-import typeDefs from './types'
+import typeDefs from './schema'
 import resolvers from './resolvers'
 
 const app = express()
 const PORT = 3000
+
+let context = {
+  
+}
 
 const server = new ApolloServer({
   typeDefs,

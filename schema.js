@@ -13,7 +13,7 @@ export default gql`
     longitude: Float!
     createdAt: GraphQLDateTime!
     updatedAt: GraphQLDateTime!,
-    organization: Organization!
+    # organization: Organization!,
   }
 
   type Organization {
@@ -21,8 +21,8 @@ export default gql`
     name: String!,
     createdAt: GraphQLDateTime!,
     updatedAt: GraphQLDateTime!,
-    # locations: [Location],
-    # events: [Event]
+    locations: [Location],
+    events: [Event],
   }
 
   type Event {
@@ -32,16 +32,16 @@ export default gql`
     description: String!,
     createdAt: GraphQLDateTime!,
     updatedAt: GraphQLDateTime!,
-    organization: Organization!
+    organization: Organization
   }
 
   type Query {
-    event(_id: ID!): Event,
-    location(_id: ID!): Location,
-    organization(_id: ID!): Organization,
-    allEvents: [Event!],
-    allLocations: [Location!],
-    allOrganizations: [Organization!]
+    event(_id: ID!): Event!,
+    location(_id: ID!): Location!,
+    organization(_id: ID!): Organization!,
+    events: [Event!],
+    locations: [Location!],
+    organizations: [Organization!],
   }
 
   # type Mutation {
