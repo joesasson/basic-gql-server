@@ -1,4 +1,4 @@
-export const sampleLocations = [
+export let sampleLocations = [
   {
     _id: '1',
     name: "Econify Office",
@@ -22,7 +22,7 @@ export const sampleLocations = [
 
 ]
 
-export const sampleOrganizations = [
+export let sampleOrganizations = [
   {
     _id: '1',
     name: "Econify",
@@ -41,7 +41,7 @@ export const sampleOrganizations = [
   }
 ]
 
-export const sampleEvents = [
+export let sampleEvents = [
   {
     _id: '1',
     name: "Happy Hour",

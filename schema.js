@@ -72,10 +72,29 @@ export default gql`
       updatedAt: GraphQLDateTime
       organizationId: ID!
     ): Location!,
+    updateLocation(_id: ID!,
+      name: String,
+      address: String,
+      latitude: Float
+      longitude: Float
+      createdAt: GraphQLDateTime
+      updatedAt: GraphQLDateTime
+      organizationId: ID
+    ): Location!,
+    deleteLocation(_id: ID!): Boolean!,
     createOrganization(
       name: String!,
       createdAt: GraphQLDateTime!,
       updatedAt: GraphQLDateTime!,
-    ): Organization!
+    ): Organization!,
+    updateOrganization(
+      _id: ID!
+      name: String,
+      createdAt: GraphQLDateTime,
+      updatedAt: GraphQLDateTime,
+    ): Organization!,
+    deleteOrganization(
+      _id: ID!
+    ): Boolean!
   }
 `
