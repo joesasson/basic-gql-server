@@ -78,7 +78,9 @@ export default {
       return organization
     },
     deleteOrganization: (parent, { _id }) => {
-      sampleOrganizations = sampleOrganizations.filter(org => org._id !== _id)
+      const orgIndex = sampleOrganizations.findIndex(org => org._id === _id)
+      if(orgIndex < 0) return false
+      sampleOrganizations.splice(orgIndex, 1)
       return true
     },
   },
