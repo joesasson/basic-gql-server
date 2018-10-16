@@ -62,3 +62,5 @@ export let sampleEvents = [
   }
 
 ]
+
+export default { sampleEvents, sampleLocations, sampleOrganizations }

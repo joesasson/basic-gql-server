@@ -2,17 +2,19 @@ import express from 'express'
 import { ApolloServer, gql } from 'apollo-server-express'
 import typeDefs from './schema'
 import resolvers from './resolvers'
+import models from './models'
 
 const app = express()
 const PORT = 3000
 
 let context = {
-  
+  models
 }
 
 const server = new ApolloServer({
   typeDefs,
-  resolvers
+  resolvers,
+  context
 })
 
 server.applyMiddleware({ app, path: '/graphql' })
