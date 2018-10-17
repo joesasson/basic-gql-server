@@ -2,7 +2,7 @@ import uuidv4 from 'uuid/v4'
 
 // set up geocoding api
 const googleMapsClient = require('@google/maps').createClient({
-  key: 'AIzaSyD-G6D1SQ6WS1cwogO933v72ueBHWZQPeg',
+  key: process.env.GEOCODING_API_KEY,
   Promise
 })
 
