@@ -23,8 +23,6 @@ export default gql`
     createLocation(
       name: String!
       address: String!
-      latitude: Float
-      longitude: Float
       createdAt: GraphQLDateTime
       updatedAt: GraphQLDateTime
       organizationId: ID!

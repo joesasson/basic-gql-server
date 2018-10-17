@@ -1,5 +1,19 @@
 import uuidv4 from 'uuid/v4'
 
+// set up geocoding api
+const googleMapsClient = require('@google/maps').createClient({
+  key: 'AIzaSyD-G6D1SQ6WS1cwogO933v72ueBHWZQPeg',
+  Promise
+})
+
+const retrieveGeoCoords = (address) => {
+  return googleMapsClient.geocode({
+    address
+  }).asPromise()
+}
+
+
+
 export default {
   Query: {
     locations: (parent, args, { models })  => models.sampleLocations,
@@ -13,9 +27,17 @@ export default {
       const _id = uuidv4()
       location._id = _id
 
-      models.sampleLocations.push(location)
-      models.sampleOrganizations[location.organizationId].locationIds.push(_id)
-      return location
+      // Call Google Maps API
+      return retrieveGeoCoords(location.address).then(response => {
+        const coords = response.json.results[0].geometry.location
+        location.longitude = coords.lng
+        location.latitude = coords.lat
+
+        models.sampleLocations.push(location)
+        models.sampleOrganizations[location.organizationId].locationIds.push(_id)
+        return location
+      }).catch(err => console.log(err))
+
     },
     updateLocation: (parent, args, { models }) => {
       let location = models.sampleLocations.find(location => args._id === location._id)
